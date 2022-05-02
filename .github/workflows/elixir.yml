@@ -27,8 +27,6 @@ jobs:
         restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: mix deps.get
-    - name: Run tests
-      run: mix test
     - name: Static Code Analysis - Dialyzer
       run: mix dialyzer
     - name: Static Code Analysis - Credo
