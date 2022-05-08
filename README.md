@@ -1,6 +1,6 @@
 # ExUrlbox
 
-  A light wrapper for the Urlbox API. ExUrlbox's documentation could be found on [HexDocs](https://hexdocs.pm/ex_urlbox).
+  A light wrapper for the Urlbox API written in Elixir. ExUrlbox's documentation could be found on [HexDocs](https://hexdocs.pm/ex_urlbox).
 
   **Compatible with Urlbox API:** `v1`
 
@@ -18,6 +18,23 @@ def deps do
   ]
 end
 ```
+
+### Configure the Urlbox API Key and Secret
+You can find your API Key and Secret [here](https://urlbox.io/dashboard/api).
+
+**Environment Vars (.env) -- refer to (.env.example)**
+```
+URLBOX_API_KEY="YoUrApIKeY"
+URLBOX_API_SECRET="YoUrApISeCreT"
+```
+
+**ExUrlbox will automatically look for the env vars listed above using the config below**
+```elixir
+config :ex_urlbox,
+  api_key: {:system, "URLBOX_API_KEY"},
+  api_secret: {:system, "URLBOX_API_SECRET"}
+```
+
 
 
 ## Example Usage
