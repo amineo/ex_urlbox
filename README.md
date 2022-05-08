@@ -82,7 +82,7 @@ end
 ```
 
 
-**NOTE: If you dont provide a `webhook_url` you will need to poll the `statusUrl` for the status of your request:**
+**NOTE: If you dont provide a `webhook_url` you will need to poll the `statusUrl` that's included in the initial post response for the status of your request:**
 ```json
 /* GET => statusUrl */
 {
