@@ -12,7 +12,7 @@ defmodule ExUrlbox.Config do
   @doc """
     Returns the default API endpoint. Used with POST requests
   """
-  def base_endpoint, do: "https://api.urlbox.io/v1"
+  def base_endpoint, do: "https://api.urlbox.io/v1/"
 
   @doc """
   Returns the *URLBOX_API_KEY*
@@ -34,7 +34,7 @@ defmodule ExUrlbox.Config do
   @doc """
     Urlbox's API path for POST requests
   """
-  def api_post_endpoint, do: "/render"
+  def api_post_endpoint, do: "render"
 
 
   @doc """
