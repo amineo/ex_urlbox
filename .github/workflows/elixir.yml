@@ -1,4 +1,4 @@
-name: Elixir CI
+name: Elixir Tests / Static Analysis
 
 on:
   push:
@@ -31,3 +31,6 @@ jobs:
       run: mix dialyzer
     - name: Static Code Analysis - Credo
       run: mix credo
+    - name: mix test
+      run: mix test
+      
