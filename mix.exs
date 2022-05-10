@@ -12,8 +12,8 @@ defmodule ExUrlbox.MixProject do
       # Docs
       name: "ExUrlbox",
       description: "A light wrapper for the Urlbox API",
-      source_url: "https://github.com/amineo/ex_url_box",
-      homepage_url: "https://github.com/amineo/ex_url_box",
+      source_url: "https://github.com/amineo/ex_urlbox",
+      homepage_url: "https://github.com/amineo/ex_urlbox",
       docs: [
         main:  "ExUrlbox",
         extras: ["README.md"]
@@ -38,14 +38,15 @@ defmodule ExUrlbox.MixProject do
       {:jason, ">= 1.0.0"},
       # Code quality, style and linting
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
   defp package() do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/amineo/ex_url_box"}
+      links: %{"GitHub" => "https://github.com/amineo/ex_urlbox"}
     ]
   end
 end

@@ -12,8 +12,8 @@ defmodule ExUrlbox do
   alias ExUrlbox.Config
   alias ExUrlbox.Utils
 
-  @adapter Tesla.Adapter.Hackney
   @default_options [format: "png"]
+  @default_client_timeout 30_000
 
   @doc """
   Send a request to Urlbox for a screenshot.
@@ -41,7 +41,7 @@ defmodule ExUrlbox do
 
   """
   @spec get(String.t(), list(), integer()) :: {:error, any()} | {:ok, Tesla.Env.t()}
-  def get(url, opts \\ @default_options, timeout \\ 30_000) when is_binary(url) and url != nil do
+  def get(url, opts \\ @default_options, timeout \\ @default_client_timeout) when is_binary(url) and url != nil do
     [{:url, url} | opts]
     |> Utils.build_url()
     |> client_get(timeout)
@@ -99,7 +99,7 @@ defmodule ExUrlbox do
     ```
   """
   @spec post(String.t(), list(), integer()) :: {:error, any()} | {:ok, Tesla.Env.t()}
-  def post(url, opts \\ @default_options, timeout \\ 30_000) when is_binary(url) and url != nil do
+  def post(url, opts \\ @default_options, timeout \\ @default_client_timeout) when is_binary(url) and url != nil do
 
     if !Keyword.get(opts, :webhook_url) do
       Logger.warning("webhook_url option was not found! You will need to poll the statusUrl from the post response for your results")
@@ -123,7 +123,7 @@ defmodule ExUrlbox do
     ```
   """
   @spec delete(String.t(), list(), integer()) :: {:error, any()} | {:ok, Tesla.Env.t()}
-  def delete(url, opts \\ @default_options, timeout \\ 30_000) when is_binary(url) and url != nil do
+  def delete(url, opts \\ @default_options, timeout \\ @default_client_timeout) when is_binary(url) and url != nil do
     [{:url, url} | opts]
     |> Utils.build_url()
     |> client_delete(timeout)
@@ -143,7 +143,7 @@ defmodule ExUrlbox do
     ```
   """
   @spec head(String.t(), list(), integer()) :: {:error, any()} | {:ok, Tesla.Env.t()}
-  def head(url, opts \\ @default_options, timeout \\ 30_000) when is_binary(url) and url != nil do
+  def head(url, opts \\ @default_options, timeout \\ @default_client_timeout) when is_binary(url) and url != nil do
     [{:url, url} | opts]
     |> Utils.build_url()
     |> client_head(timeout)
@@ -170,7 +170,7 @@ defmodule ExUrlbox do
     ]
     |> determine_endpoint(is_post?)
 
-    Tesla.client(middleware, @adapter)
+    Tesla.client(middleware, Config.get_client_adapter)
   end
 
   @doc false

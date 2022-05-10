@@ -1,7 +1,9 @@
 import Config
 
+config :tesla, ExUrlbox, adapter: Tesla.Mock
+
 config :ex_urlbox,
-  api_key: {:system, "URLBOX_API_KEY"},
-  api_secret: {:system, "URLBOX_API_SECRET"}
+  api_key: "fakeAPIkey",
+  api_secret: "fakeAPIsecret"
 
 config :logger, level: :info

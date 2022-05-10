@@ -51,4 +51,10 @@ defmodule ExUrlbox.Config do
 
   defp read_from_system({:system, env}, default), do: System.get_env(env) || default
   defp read_from_system(value, _default), do: value
+
+
+  # Determine the Tesla adapter to use
+  @doc false
+  def get_client_adapter, do:  Application.get_env(:tesla, ExUrlbox, [])[:adapter] || Tesla.Adapter.Hackney
+
 end
