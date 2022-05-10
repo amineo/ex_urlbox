@@ -1,4 +1,5 @@
 # ExUrlbox
+[![Elixir Tests / Static Analysis](https://github.com/amineo/ex_urlbox/actions/workflows/elixir.yml/badge.svg?branch=main)](https://github.com/amineo/ex_urlbox/actions/workflows/elixir.yml)
 
   A light wrapper for the Urlbox API written in Elixir. ExUrlbox's documentation could be found on [HexDocs](https://hexdocs.pm/ex_urlbox).
 
@@ -14,7 +15,7 @@ This package can be installed by adding `ex_urlbox` to your list of dependencies
 ```elixir
 def deps do
   [
-    {:ex_urlbox, "~> 0.1.0"}
+    {:ex_urlbox, "~> 0.2.0"}
   ]
 end
 ```
