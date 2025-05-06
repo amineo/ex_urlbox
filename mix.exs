@@ -32,7 +32,7 @@ defmodule ExUrlbox.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.28.0"},
+      {:ex_doc, "~> 0.28.0", only: [:dev], runtime: false},
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:jason, ">= 1.0.0"},
