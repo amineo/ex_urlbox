@@ -4,7 +4,7 @@ defmodule ExUrlbox do
 
   **Compatible with Urlbox API Version:** `v1`
 
-  A list of options that you can pass into `ExUrlBox.get/3`, `ExUrlBox.post/3`, `ExUrlBox.head/3`, and `ExUrlBox.delete/3` can be found here:
+  A list of options that you can pass into `ExUrlbox.get/3`, `ExUrlbox.post/3`, `ExUrlbox.head/3`, and `ExUrlbox.delete/3` can be found here:
   https://urlbox.io/docs/options
   """
 
@@ -20,7 +20,7 @@ defmodule ExUrlbox do
   Refer to the official documentation for all the available options: https://urlbox.io/docs/options
 
     **This action is `synchronous`. **
-    If you want to use an `async` flow that uses webhooks, use `ExUrlBox.post/3`.
+    If you want to use an `async` flow that uses webhooks, use `ExUrlbox.post/3`.
 
    **Function signature is: `url, [options], timeout`**
 
@@ -170,8 +170,15 @@ defmodule ExUrlbox do
     ]
     |> determine_endpoint(is_post?)
 
-    Tesla.client(middleware, Config.get_client_adapter)
+    # Pass timeout to Hackney adapter
+    adapter_opts = [recv_timeout: timeout]
+
+    # Use Config module to determine the appropriate adapter
+    adapter = ExUrlbox.Config.get_client_adapter(adapter_opts)
+
+    Tesla.client(middleware, adapter)
   end
+
 
   @doc false
   @spec determine_endpoint(list(), boolean()) :: list()

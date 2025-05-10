@@ -54,7 +54,18 @@ defmodule ExUrlbox.Config do
 
 
   # Determine the Tesla adapter to use
-  @doc false
-  def get_client_adapter, do:  Application.get_env(:tesla, ExUrlbox, [])[:adapter] || Tesla.Adapter.Hackney
+  @doc """
+  Returns the appropriate Tesla adapter based on the environment.
+  In test environment, returns Tesla.Mock.
+  In other environments, returns the configured adapter or defaults to Hackney.
+  """
+  def get_client_adapter(opts \\ []) do
+    env = Application.get_env(:ex_urlbox, :env, :prod)
+
+    case env do
+      :test -> Tesla.Mock
+      _ -> {Application.get_env(:tesla, ExUrlbox, [])[:adapter] || Tesla.Adapter.Hackney, opts}
+    end
+  end
 
 end

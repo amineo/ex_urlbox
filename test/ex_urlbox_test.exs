@@ -1,6 +1,5 @@
 defmodule ExUrlboxTest do
   use ExUnit.Case, async: false
-  alias ExUrlbox.Config
   alias ExUrlbox.Utils
 
   doctest ExUrlbox
@@ -12,7 +11,7 @@ defmodule ExUrlboxTest do
     height: 768
   ]
 
-  @assembled_request_url "https://api.urlbox.io/v1/fakeAPIkey/1783c14642a8a56a36f6492f73f524bfe132ed91/png?url=https%3A%2F%google.com&width=1024&height=768"
+  @assembled_request_url "https://api.urlbox.io/v1/fakeAPIkey/3e2c5515f8a2de570445a8b4b5c041809fb9b97e/png?url=https%3A%2F%2Fgoogle.com&width=1024&height=768"
 
   # Mock requests
   setup_all do
@@ -39,6 +38,7 @@ defmodule ExUrlboxTest do
   test "[post] screenshot request" do
     options = [{:webhook_url, "https://example.com/webook"} | @test_options]
     {:ok, screenshot_request} = ExUrlbox.post(@test_url, options)
+
 
     # Headers
     assert Tesla.get_headers(screenshot_request, "authorization") === ["Bearer #{Application.get_env(:ex_urlbox, :api_secret)}"]
