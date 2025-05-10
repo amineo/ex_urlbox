@@ -5,7 +5,7 @@ defmodule ExUrlbox.MixProject do
     [
       app: :ex_urlbox,
       version: "0.2.0",
-      elixir: "~> 1.13",
+      elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
@@ -32,14 +32,14 @@ defmodule ExUrlbox.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.28.0", only: [:dev], runtime: false},
-      {:tesla, "~> 1.4"},
-      {:hackney, "~> 1.17"},
-      {:jason, ">= 1.0.0"},
-      # Code quality, style and linting
-      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:mox, "~> 1.0", only: :test}
+      {:tesla, "~> 1.14"},
+      {:hackney, "~> 1.23"},
+      {:jason, "~> 1.4"},
+      # Docs, code quality, style and linting
+      {:ex_doc, "~> 0.37", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:mox, "~> 1.2", only: :test}
     ]
   end
 
