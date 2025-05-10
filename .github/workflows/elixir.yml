@@ -7,24 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
-    name: Build and test
-    runs-on: ubuntu-latest
-
+  test:
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        otp: ['26.x', '27.x']
+        elixir: ['1.16.3', '1.17.3', '1.18.3']
+        exclude:
+          - otp: '27.x'
+            elixir: '1.16.3'
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Elixir
-      uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+    - uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.13.1'
-        otp-version: '24.0.4'
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
+        otp-version: ${{matrix.otp}}
+        elixir-version: ${{matrix.elixir}}
     - name: Install dependencies
       run: mix deps.get
     - name: Static Code Analysis - Dialyzer
