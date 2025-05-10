@@ -5,7 +5,7 @@
 
   **Compatible with Urlbox API:** `v1`
 
-  A list of options that you can pass into `ExUrlBox.get/3`, `ExUrlBox.post/3`, `ExUrlBox.head/3`, and `ExUrlBox.delete/3` can be found here:
+  A list of options that you can pass into `ExUrlbox.get/3`, `ExUrlbox.post/3`, `ExUrlbox.head/3`, and `ExUrlbox.delete/3` can be found here:
   https://urlbox.io/docs/options
 
 
