@@ -33,7 +33,7 @@ defmodule ExUrlbox.MixProject do
   defp deps do
     [
       {:tesla, "~> 1.14"},
-      {:hackney, "~> 1.23"},
+      {:hackney, "~> 1.23 or ~> 4.0"},
       {:jason, "~> 1.4"},
       # Docs, code quality, style and linting
       {:ex_doc, "~> 0.37", only: [:dev], runtime: false},
