@@ -15,7 +15,7 @@ This package can be installed by adding `ex_urlbox` to your list of dependencies
 ```elixir
 def deps do
   [
-    {:ex_urlbox, "~> 0.3.0"}
+    {:ex_urlbox, "~> 0.4.0"}
   ]
 end
 ```
